@@ -1023,49 +1023,5 @@ for actual, predicted in zip(y_test, y_pred_test):
     print(f"{actual}\t\t{predicted}")
 
 
-# In[83]:
-
-
-pip install scikit-learn graphviz
-
-
-# In[ ]:
-
-
-from sklearn.ensemble import RandomForestClassifier
-from sklearn import tree
-from sklearn.datasets import load_iris
-import matplotlib.pyplot as plt
-import graphviz
-
-# Load dataset
-iris = load_iris()
-X, y = iris.data, iris.target
-
-# Train RandomForest model
-rf = RandomForestClassifier(n_estimators=10)
-rf.fit(X, y)
-
-# Extract a single tree
-estimator = rf.estimators_[0]
-
-# Export as dot file
-dot_data = tree.export_graphviz(estimator, out_file=None, 
-                                feature_names=iris.feature_names,  
-                                class_names=iris.target_names,
-                                filled=True, rounded=True,  
-                                special_characters=True)  
-
-# Draw graph
-graph = graphviz.Source(dot_data)  
-graph.render("iris_tree")  # Saves the tree as a .pdf file
-graph  # Displays the tree in the notebook
-
-
-# In[76]:
-
-
-get_ipython().system('pip install streamlit')
-
 
 # ### ---------------------------------------------------------------------END------------------------------------------------------------------------------
